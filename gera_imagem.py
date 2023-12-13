@@ -99,7 +99,7 @@ def genocidio(populacao, array_fit_ind, filhos):
         populacao[array_fit_ind[j][1]] = filhos[j - (TAMANHO_POPULACAO - len(filhos))]
 
 # Função para plotar a população com o número da população
-def plotar_populacao(populacao, iteracao, ims, fig, ax, pixels, largura, altura):
+def plotar_populacao(populacao, iteracao, ims, fig, ax, pixels, largura, altura, medias_fitness):
     for axis in ax:
         axis.clear()
     
@@ -115,53 +115,50 @@ def plotar_populacao(populacao, iteracao, ims, fig, ax, pixels, largura, altura)
     ax[1].text(0.5, 1.05, f'População: {iteracao}', horizontalalignment='center', transform=ax[1].transAxes, fontsize=12)
     ax[1].axis('off')
 
+    # Plotar a média dos fitness
+    ax[2].plot(medias_fitness[:iteracao+1], marker='o')
+    ax[2].set_title('Média dos Fitness')
+    ax[2].set_xlabel('Iteração')
+    ax[2].set_ylabel('Fitness Médio')
     ims.append([ax])
 
 # Simulação do algoritmo genético
-def simulacao_algoritmo_genetico(iteracoes, pixels, taxa_genocidio = 0.1, intervalo = 100):    # Geração da população inicial
+def simulacao_algoritmo_genetico(iteracoes, pixels, taxa_genocidio=0.1, intervalo=100):
     populacao = gerar_populacao_inicial(TAMANHO_POPULACAO)
+    fig, ax = plt.subplots(1, 3, figsize=(15, 5))
 
-    fig, ax = plt.subplots(1, 2, figsize=(10, 5))
-    
     ims = []
-    plotar_populacao(populacao, 0, ims, fig, ax, pixels, largura, altura)
+    medias_fitness = []
+
+    fitness = calcular_fitness(populacao, pixels)
+    medias_fitness.append(np.average(fitness))
+
+    plotar_populacao(populacao, 0, ims, fig, ax, pixels, largura, altura, medias_fitness)
 
     def update(frame):
         nonlocal populacao
-        # Cálculo do fitness
         fitness = calcular_fitness(populacao, pixels)
-        print(np.average(fitness))
+        medias_fitness.append(np.average(fitness))
 
-        # Criando array que armazena índice do indivíduo e seu "fitness"
         array_fit_ind = [(fit, ind) for ind, fit in enumerate(fitness)]
-
-        # Ordenando o array com os índices 
         array_fit_ind = ordena(array_fit_ind, 0)
 
-        # Seleção dos indivíduos mais adaptados
         indices_selecionados = selecao(fitness, len(populacao), taxa_genocidio)
         populacao_selecionada = populacao[indices_selecionados]
 
-        # Cruzamento (crossover)
         filhos = crossover(populacao_selecionada, TAMANHO_POPULACAO)
-
-        # Mutação
         filhos_mutados = mutacao(filhos)
+        genocidio(populacao, array_fit_ind, filhos_mutados)
 
-        # Genocídio
-        genocidio(populacao,array_fit_ind, filhos_mutados)
-
-        # Mantém pelo menos um indivíduo para evitar a extinção total da população
         if len(indices_selecionados) == 0:
             populacao[fitness.argmin()] = filhos_mutados[0]
 
-        plotar_populacao(populacao, frame + 1, ims, fig, ax, pixels, largura, altura)
+        plotar_populacao(populacao, frame + 1, ims, fig, ax, pixels, largura, altura, medias_fitness)
 
     ani = FuncAnimation(fig, update, frames=iteracoes, interval=intervalo, blit=False, repeat=False)
     plt.show()
 
-
 assert len(pixels) == TAMANHO_POPULACAO * 3, "Tamanho incompatível de pixels"
 
-# Rodar a simulação com 500 iterações e taxa de genocídio de 10%
-simulacao_algoritmo_genetico(100, pixels, taxa_genocidio = 0.1, intervalo = 500)
+# Rodar a simulação com 100 iterações e taxa de genocídio de 10%
+simulacao_algoritmo_genetico(100, pixels, taxa_genocidio=0.1, intervalo=500)
