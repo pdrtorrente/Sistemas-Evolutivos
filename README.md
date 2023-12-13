@@ -3,7 +3,7 @@ O objetivo do projeto é fazer um programa com algoritmo genético que gere uma 
 
 Este projeto foi realizado na disciplina **SCC0713 - Sistemas Evolutivos Aplicados à Robótica** para fins educacionais.
 
-Link da apresentação:
+Link da apresentação: https://drive.google.com/file/d/1w_VU63lqRdXGpKfya93BiFihopZSRkfZ/view?usp=drive_link
 
 ## Funcionamento do programa
 O programa funciona da seguinte forma:
