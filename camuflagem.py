@@ -40,11 +40,11 @@ def plotar_populacao(populacao, iteracao, ims, fig, ax):
     ax.clear()
     imagem = populacao.reshape(30, 30, 3)
     ax.imshow(imagem)
-    ax.text(0.5, 1.05, f'População: {iteracao}', horizontalalignment='center', transform=ax.transAxes, fontsize=12)
+    ax.text(0.5, 1.05, f'Geração: {iteracao}', horizontalalignment='center', transform=ax.transAxes, fontsize=12)
     ims.append([ax])
 
 # Função para substituir os indivíduos menos camuflados com os filhos dos que mais mais camuflados
-def genocidio(taxa_genocidio, populacao, array_fit_ind, filhos): 
+def genocidio(populacao, array_fit_ind, filhos): 
     # Atualização da população com os filhos gerados, substituindo os menos aptos
     for j in range(900 - len(filhos), 900):
         populacao[array_fit_ind[j][1]] = filhos[j - (900 - len(filhos))]
@@ -81,7 +81,7 @@ def simulacao_algoritmo_genetico(iteracoes, cor_camuflagem, taxa_genocidio=0.5):
         filhos_mutados = mutacao(filhos)
 
         # Genocídio
-        genocidio(taxa_genocidio, populacao,array_fit_ind, filhos_mutados)
+        genocidio(populacao,array_fit_ind, filhos_mutados)
 
         # Mantém pelo menos um indivíduo para evitar a extinção total da população
         if len(indices_selecionados) == 0:
@@ -89,8 +89,8 @@ def simulacao_algoritmo_genetico(iteracoes, cor_camuflagem, taxa_genocidio=0.5):
 
         plotar_populacao(populacao, frame + 1, ims, fig, ax)
 
-    ani = FuncAnimation(fig, update, frames=iteracoes, interval=50, blit=False, repeat=False)
+    ani = FuncAnimation(fig, update, frames=iteracoes, interval=100, blit=False, repeat=False)
     plt.show()
 
 # Rodar a simulação com 100 iterações e taxa de genocídio de 10%
-simulacao_algoritmo_genetico(1000, cor_camuflagem=[0, 0, 255], taxa_genocidio=0.1)
+simulacao_algoritmo_genetico(1000, cor_camuflagem=[255, 0, 0], taxa_genocidio=0.1)

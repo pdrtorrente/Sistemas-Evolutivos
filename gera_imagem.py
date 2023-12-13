@@ -112,7 +112,7 @@ def plotar_populacao(populacao, iteracao, ims, fig, ax, pixels, largura, altura,
     # Plotar a população
     imagem = populacao.reshape(altura, largura, 3)
     ax[1].imshow(imagem)
-    ax[1].text(0.5, 1.05, f'População: {iteracao}', horizontalalignment='center', transform=ax[1].transAxes, fontsize=12)
+    ax[1].text(0.5, 1.05, f'Geração: {iteracao}', horizontalalignment='center', transform=ax[1].transAxes, fontsize=12)
     ax[1].axis('off')
 
     # Plotar a média dos fitness
