@@ -28,6 +28,7 @@ Foi escolhido o formato **.ppm** devido a sua facilidade para manipulação de p
 * Python
 
 **Para executar o programa**
+
 Primeiramente clone o repositório;
 
 Execute o programa com o seguinte comando:
