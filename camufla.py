@@ -50,7 +50,7 @@ def genocidio(taxa_genocidio, populacao, array_fit_ind, filhos):
         populacao[array_fit_ind[j][1]] = filhos[j - (900 - len(filhos))]
 
 # Simulação do algoritmo genético
-def simulacao_algoritmo_genetico(iteracoes, cor_camuflagem, taxa_genocidio=0.5):    # Geração da população inicial
+def simulacao_algoritmo_genetico(iteracoes, cor_camuflagem, taxa_genocidio = 0.5, intervalo = 100):    # Geração da população inicial
     populacao = gerar_populacao_inicial(900)
 
     fig, ax = plt.subplots()
@@ -89,8 +89,8 @@ def simulacao_algoritmo_genetico(iteracoes, cor_camuflagem, taxa_genocidio=0.5):
 
         plotar_populacao(populacao, frame + 1, ims, fig, ax)
 
-    ani = FuncAnimation(fig, update, frames=iteracoes, interval=50, blit=False, repeat=False)
+    ani = FuncAnimation(fig, update, frames=iteracoes, interval=intervalo, blit=False, repeat=False)
     plt.show()
 
-# Rodar a simulação com 100 iterações e taxa de genocídio de 40%
-simulacao_algoritmo_genetico(1000, cor_camuflagem=[255, 0, 0], taxa_genocidio=0.1)
+# Rodar a simulação com 500 iterações e taxa de genocídio de 10%
+simulacao_algoritmo_genetico(500, cor_camuflagem=[255, 0, 0], taxa_genocidio = 0.1, intervalo = 100)
