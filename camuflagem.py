@@ -92,5 +92,5 @@ def simulacao_algoritmo_genetico(iteracoes, cor_camuflagem, taxa_genocidio=0.5):
     ani = FuncAnimation(fig, update, frames=iteracoes, interval=50, blit=False, repeat=False)
     plt.show()
 
-# Rodar a simulação com 100 iterações e taxa de genocídio de 40%
-simulacao_algoritmo_genetico(1000, cor_camuflagem=[255, 0, 0], taxa_genocidio=0.1)
+# Rodar a simulação com 100 iterações e taxa de genocídio de 10%
+simulacao_algoritmo_genetico(1000, cor_camuflagem=[0, 0, 255], taxa_genocidio=0.1)
