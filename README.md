@@ -33,7 +33,11 @@ Primeiramente clone o repositório;
 
 Execute o programa com o seguinte comando:
 ```
-python3 camufla.py
+python3 gera_imagem.py
+```
+Ou para a camuflagem em cor:
+```
+python3 camuflagem.py
 ```
 ## Observações
 Para colocar outras imagens de exemplo, adicione no mesmo repositório uma imagem no formato **.ppm** com o nome "exemplo.ppm".
