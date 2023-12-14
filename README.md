@@ -17,8 +17,12 @@ O programa funciona da seguinte forma:
 Foi escolhido o formato **.ppm** devido a sua facilidade para manipulação de pixels e por não haver compressão, não há perda de dados da imagem.
 
 ### Programa em execução
+
+![camuflagem](https://github.com/pdrtorrente/Sistemas-Evolutivos/assets/83795403/6eabd161-e171-444f-9554-ed3356a2dced)
+
 ![programa-rodando](https://github.com/pdrtorrente/Sistemas-Evolutivos/assets/83795403/7ecbcb57-cac9-4042-bbb1-88c239d7736c)
 
+![media-fitness](https://github.com/pdrtorrente/Sistemas-Evolutivos/assets/83795403/d6a46c98-89af-4d0c-93ae-aacb1502f017)
 
 ## Getting Started
 
