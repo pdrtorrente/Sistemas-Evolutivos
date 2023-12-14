@@ -18,10 +18,13 @@ Foi escolhido o formato **.ppm** devido a sua facilidade para manipulação de p
 
 ### Programa em execução
 
+Programa de camuflagem com base em uma cor definida:
 ![camuflagem](https://github.com/pdrtorrente/Sistemas-Evolutivos/assets/83795403/6eabd161-e171-444f-9554-ed3356a2dced)
 
+Geração de imagem:
 ![programa-rodando](https://github.com/pdrtorrente/Sistemas-Evolutivos/assets/83795403/7ecbcb57-cac9-4042-bbb1-88c239d7736c)
 
+Média do fitness da população ao longo das gerações (quanto mais próximo de zero, melhores o indivíduos)
 ![media-fitness](https://github.com/pdrtorrente/Sistemas-Evolutivos/assets/83795403/d6a46c98-89af-4d0c-93ae-aacb1502f017)
 
 ## Getting Started
